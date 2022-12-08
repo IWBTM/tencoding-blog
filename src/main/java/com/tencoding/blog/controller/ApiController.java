@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApiController {
 
 	@GetMapping("/get")
-	public String get() {
+	public String get() { 
 		return "test1";
 	}
 }

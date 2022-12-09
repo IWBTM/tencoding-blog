@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,7 +62,7 @@ public class DummyControllerTest {
 	// 모든 회원 정보 가져오기
 	@GetMapping("/user")
 	public List<User> list() {
-		return iUserRepository.findAll(); 
+		return iUserRepository.findAll();
 	}
 
 	// 지정된 수 만큼 회원 정보 가져오기
@@ -72,7 +73,7 @@ public class DummyControllerTest {
 		return userPage;
 	}
 
-	@Transactional  // javax.transactional
+	@Transactional // javax.transactional
 	@PutMapping("/user/{id}")
 	public User updateUser(@PathVariable int id, @RequestBody User reqUser) {
 		log.info(">>> id : {}, >>> pw : {}, >>> email {}", id, reqUser.getPassword(), reqUser.getEmail());
@@ -89,4 +90,32 @@ public class DummyControllerTest {
 //		iUserRepository.save(user);
 		return null;
 	}
+
+	@DeleteMapping("/user/{id}")
+	public String delete(@PathVariable int id) {
+		
+		try {
+			iUserRepository.deleteById(id);
+		} catch (Exception e) {
+			return "해당 사용자를 찾을 수 없습니다.";
+		}
+		return id + "번 회원님의 정보가 삭제 되었습니다.";
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

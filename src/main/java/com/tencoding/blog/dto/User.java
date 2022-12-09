@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 
@@ -34,7 +33,7 @@ import lombok.ToString;
 
 //@ColumnDefault를 사용하기 위해선 선언해야 한다. 
 // null 필드가 들어오면 무시해 ! -> 그럼 디폴트 값이 적용된다.
-@DynamicInsert 
+@DynamicInsert
 public class User {
 
 	@Id // PK 지정

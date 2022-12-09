@@ -1,6 +1,12 @@
 package com.tencoding.blog.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +36,7 @@ public class DummyControllerTest {
 		// 보다 명확하게 값을 할당
 		user.setRole(RoleType.USER);
 		iUserRepository.save(user);
+		System.out.println("회원 가입");
 		return "회원가입이 완료 되었습니다.";
 	}
 
@@ -42,7 +49,19 @@ public class DummyControllerTest {
 		User user = iUserRepository.findById(id).orElseThrow(() -> {
 			return new IllegalAccessException();
 		});
-		
+
 		return user;
+	}
+
+	@GetMapping("/user")
+	public List<User> list() {
+		return iUserRepository.findAll();
+	}
+	
+	@GetMapping("/users")
+	public Page<User> pageList(@PageableDefault(size = 5, sort = "id", direction = Direction.DESC) Pageable pageable) {
+		Page<User> userPage = iUserRepository.findAll(pageable);
+		List<User> users = iUserRepository.findAll(pageable).getContent();
+		return userPage;
 	}
 }

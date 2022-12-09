@@ -25,4 +25,9 @@ public class TempController {
 		// = 메인부터 /WEB_INF/views/test.jsp
 		return "/test";
 	}
+	
+	@GetMapping("/temp/join")
+	public String join() {
+		return "/join";
+	}
 }

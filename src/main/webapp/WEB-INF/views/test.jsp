@@ -5,11 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
-	<%
-	System.out.println("여기는 test.jsp파일 이에요 ~~");
-	%>
-	<h1>test.jsp 파일 이라구요 ~</h1>
+	<h2>This is heading</h2>
+	<p>p태그 1</p>
+	<p>p태그 2</p>
+	
+	<button>click me</button>
+	
+	<script src="/blog/js/test.js"></script>
 </body>
 </html>

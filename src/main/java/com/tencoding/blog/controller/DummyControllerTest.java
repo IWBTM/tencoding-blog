@@ -40,9 +40,9 @@ public class DummyControllerTest {
 
 		// 보다 명확하게 값을 할당
 		user.setRole(RoleType.USER);
-		user.setUsername(user.getUsername() + user.getId());
+//		user.setUsername(user.getUsername() + user.getId());
 		iUserRepository.save(user);
-		System.out.println("회원 가입");
+		System.out.println(">>>> 회원 가입 <<<<");
 		return "회원가입이 완료 되었습니다.";
 	}
 
@@ -101,5 +101,32 @@ public class DummyControllerTest {
 			return "해당 사용자를 찾을 수 없습니다.";
 		}
 		return id + "번 회원님의 정보가 삭제 되었습니다.";
+	}
+
+	// 스프링 기본 파싱 전략 즉, 변수에 값을 바로 할당한다.
+	@GetMapping("/user/test")
+	public String getTest(String name, int age) {
+		System.out.println("name: " + name);
+		System.out.println("age: " + age);
+		return "";
+	}
+
+	// form과 함수의 매개 변수 명은 같아야 한다.
+	@PostMapping("/signup2")
+	public String signUp2(String username, String password, String email) {
+
+		User reqUser = new User();
+
+		reqUser.setUsername(username);
+		reqUser.setPassword(password);
+		reqUser.setEmail(email);
+		reqUser.setRole(RoleType.USER);
+
+		System.out.println("user" + username);
+		System.out.println("password" + password);
+		System.out.println("email" + email);
+		iUserRepository.save(reqUser);
+		System.out.println("회원 가입");
+		return "회원가입이 완료 되었습니다.";
 	}
 }

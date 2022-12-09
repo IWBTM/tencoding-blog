@@ -40,6 +40,7 @@ public class DummyControllerTest {
 
 		// 보다 명확하게 값을 할당
 		user.setRole(RoleType.USER);
+		user.setUsername(user.getUsername() + user.getId());
 		iUserRepository.save(user);
 		System.out.println("회원 가입");
 		return "회원가입이 완료 되었습니다.";
@@ -93,7 +94,7 @@ public class DummyControllerTest {
 
 	@DeleteMapping("/user/{id}")
 	public String delete(@PathVariable int id) {
-		
+
 		try {
 			iUserRepository.deleteById(id);
 		} catch (Exception e) {
@@ -102,20 +103,3 @@ public class DummyControllerTest {
 		return id + "번 회원님의 정보가 삭제 되었습니다.";
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -4,7 +4,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,10 +17,10 @@ import com.tencoding.blog.service.UserService;
 @RequestMapping("/api")
 public class UserApiController {
 
-	// @Autowired 은 옛날 방식이긴 하나 쓰는 곳이 있긴 하다.
+	// @Autowired는 옛날 방식이긴 하나 쓰는 곳이 있긴 하다.
 	@Autowired
 	private UserService userService;
-	
+
 	// 로그인 성공 시 session 저장
 	@Autowired
 	private HttpSession session;

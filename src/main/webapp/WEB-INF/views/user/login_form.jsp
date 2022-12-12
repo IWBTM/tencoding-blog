@@ -4,12 +4,13 @@
 <div class="container">
 	<form action="">
 		<div class="form-group">
-			<label for="username">username:</label> <input type="text" class="form-control" placeholder="Enter username" id="username">
+			<label for="username">username:</label> <input type="text" class="form-control" placeholder="Enter username" id="username" value="teno">
 		</div>
 		<div class="form-group">
-			<label for="password">password:</label> <input type="password" class="form-control" placeholder="Enter password" id="password">
+			<label for="password">password:</label> <input type="password" class="form-control" placeholder="Enter password" id="password" value="asd1234">
 		</div>
-		<button type="submit" class="btn btn-primary">sign in</button>
 	</form>
+	<button type="button" id="btn--login" class="btn btn-primary">sign in</button>
 </div>
+<script type="text/javascript" src="/js/user.js"></script>
 <%@ include file="../layout/footer.jsp"%>

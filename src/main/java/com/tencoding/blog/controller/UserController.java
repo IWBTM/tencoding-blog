@@ -10,11 +10,15 @@ public class UserController {
 
 	@GetMapping("/login-form")
 	public String loginForm() {
+		System.out.println("로그인 거침");
+		System.out.println("======");
 		return "user/login_form";
 	}
 
-	@GetMapping("join-form")
+	@GetMapping("/join-form")
 	public String joinForm() {
+		System.out.println("회원가입 거침");
+		System.out.println("======");
 		return "user/join_form";
 	}
 }

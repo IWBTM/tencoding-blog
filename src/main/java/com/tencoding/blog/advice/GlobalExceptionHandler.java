@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.UnexpectedRollbackException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.tencoding.blog.dto.CustomError;
+import com.tencoding.blog.dto.ErrorResponse;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -52,5 +54,16 @@ public class GlobalExceptionHandler {
 		// ErrorResponse는 추후 처리
 		System.out.println("===== MethodArgumentNotValidException  종료 =====");
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(eList);
+	}
+
+	@ExceptionHandler(value = UnexpectedRollbackException.class)
+	public ResponseEntity<?> unexpectedRollbackException(UnexpectedRollbackException ex) {
+		System.out.println("===== unexpectedRollbackException  발생 =====");
+
+		ErrorResponse errorResponse = ErrorResponse.builder().statusCode(HttpStatus.BAD_REQUEST.toString())
+				.code(HttpStatus.BAD_REQUEST.value()).message("동일한 아이디가 존재 합니다.").build();
+
+		System.out.println("===== MethodArgumentNotValidException  종료 =====");
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
 	}
 }

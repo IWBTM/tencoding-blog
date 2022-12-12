@@ -29,7 +29,7 @@
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
 
-		<!-- JSTL -->
+		<!-- JSTL!! -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -96,5 +96,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

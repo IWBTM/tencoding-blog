@@ -22,11 +22,9 @@ public class UserService {
 	private IUserRepository iUserRepository;
 
 	/**
-	 * 
 	 * Transactional : 하나의 기능 + 하나의 기능 을 묶어서 단위의 기능을 처리
 	 * 
 	 * DB 수정 시 롤백 처리도 가능
-	 * 
 	 */
 	@Transactional
 	public int saveUser(User user) {
@@ -38,5 +36,20 @@ public class UserService {
 			e.printStackTrace();
 		}
 		return -1;
+	}
+
+//	public User login(User user) {
+//
+//		// 기본 Repository에 필요한 함수가 존재하지 않을 경우 직접 생성하자.
+//		User userEntity = iUserRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+//		System.out.println("userEntity : " + userEntity);
+//		return userEntity;
+//	}
+	public User login(User user) {
+
+		// 기본 Repository에 필요한 함수가 존재하지 않을 경우 직접 생성하자.
+		User userEntity = iUserRepository.login(user.getUsername(), user.getPassword());
+		System.out.println("userEntity : " + userEntity);
+		return userEntity;
 	}
 }

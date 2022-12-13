@@ -49,28 +49,29 @@ let index = {
 		});
 	},
 
-	login: function() {
-		let data = {
-			username: $("#username").val(),
-			password: $("#password").val(),
-		};
-
-		$.ajax({
-			type: "POST",
-			url: "/api/user/login",
-			data: JSON.stringify(data),
-			contentType: "application/json; chraset=UTF-8",
-			dataType: "json"
-		}).done(function(data, textStatus, xhr) {
-			alert("로그인에 성공 하셨습니다.");
-			console.log(data);
-			console.log(textStatus);
-			console.log(xhr);
-			location.href = "/";
-		}).fail(function(error) {
-			alert("로그인에 실패 하셨습니다.");
-		});
-	}
+	/**	login: function() {
+			let data = {
+				username: $("#username").val(),
+				password: $("#password").val(),
+			};
+	
+			$.ajax({
+				type: "POST",
+				url: "/api/user/login",
+				data: JSON.stringify(data),
+				contentType: "application/json; chraset=UTF-8",
+				dataType: "json"
+			}).done(function(data, textStatus, xhr) {
+				alert("로그인에 성공 하셨습니다.");
+				console.log(data);
+				console.log(textStatus);
+				console.log(xhr);
+				location.href = "/";
+			}).fail(function(error) {
+				alert("로그인에 실패 하셨습니다.");
+			});
+		}
+		 */
 }
 
 // 호출

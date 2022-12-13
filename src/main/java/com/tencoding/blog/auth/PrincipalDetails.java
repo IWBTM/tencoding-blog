@@ -80,4 +80,14 @@ public class PrincipalDetails implements UserDetails {
 		// false면 비활성화
 		return true;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
 }

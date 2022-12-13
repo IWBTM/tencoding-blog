@@ -10,8 +10,6 @@ import com.tencoding.blog.auth.PrincipalDetails;
 public class BoardController {
 	/**
 	 * 로그인이 인증되면 controller에서 어떻게 session을 찾을까?
-	 * 
-	 *
 	 */
 
 	@GetMapping({ "", "/" })
@@ -21,5 +19,11 @@ public class BoardController {
 			System.out.println(principal.getAuthorities());
 		}
 		return "index";
+	}
+	
+	@GetMapping("/board/save_form")
+	public String saveForm() {
+		
+		return "/board/save_form";
 	}
 }

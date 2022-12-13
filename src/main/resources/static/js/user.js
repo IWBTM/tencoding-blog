@@ -28,7 +28,7 @@ let index = {
 			// 회원가입 요청
 			// type : 통신의 요청 메서드 방식
 			type: "POST",
-			url: "/api/user",
+			url: "/auth/joinProc",
 			// http 메시지 바디에 JSON형식으로 변환한 오브젝트가 들어간다. 즉, JSON 문자열이 들어간다.
 			data: JSON.stringify(data),
 

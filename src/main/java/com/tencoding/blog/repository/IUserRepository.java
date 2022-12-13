@@ -15,8 +15,8 @@ public interface IUserRepository extends JpaRepository<User, Integer> {
 //	User findByUsernameAndPassword(String username, String password);
 
 	// native 쿼리 만들기
-	@Query(value = " SELECT * " + " FROM user " + " WHERE username = ?1 "
-			+ " and password = ?2 ", nativeQuery = true)
-	User login(String username, String password);
+//	@Query(value = " SELECT * " + " FROM user " + " WHERE username = ?1 "
+//			+ " and password = ?2 ", nativeQuery = true)
+//	User login(String username, String password);
 
 }

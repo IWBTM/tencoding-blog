@@ -45,11 +45,11 @@ public class UserService {
 //		System.out.println("userEntity : " + userEntity);
 //		return userEntity;
 //	}
-	public User login(User user) {
-
-		// 기본 Repository에 필요한 함수가 존재하지 않을 경우 직접 생성하자.
-		User userEntity = iUserRepository.login(user.getUsername(), user.getPassword());
-		System.out.println("userEntity : " + userEntity);
-		return userEntity;
-	}
+//	public User login(User user) {
+//
+//		// 기본 Repository에 필요한 함수가 존재하지 않을 경우 직접 생성하자.
+//		User userEntity = iUserRepository.login(user.getUsername(), user.getPassword());
+//		System.out.println("userEntity : " + userEntity);
+//		return userEntity;
+//	}
 }

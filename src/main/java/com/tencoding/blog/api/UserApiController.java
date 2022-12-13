@@ -14,7 +14,7 @@ import com.tencoding.blog.dto.User;
 import com.tencoding.blog.service.UserService;
 
 @RestController
-@RequestMapping("/api")
+//@RequestMapping("/api")
 public class UserApiController {
 
 	// @Autowired는 옛날 방식이긴 하나 쓰는 곳이 있긴 하다.
@@ -25,7 +25,7 @@ public class UserApiController {
 	@Autowired
 	private HttpSession session;
 
-	@PostMapping("/user")
+	@PostMapping("/auth/joinProc")
 	public ResponseDto<Integer> save(@RequestBody User user) {
 		System.out.println("user : " + user);
 
@@ -36,16 +36,16 @@ public class UserApiController {
 		return new ResponseDto<Integer>(HttpStatus.OK, result);
 	}
 
-	@PostMapping("/user/login")
-	public ResponseDto<Integer> login(@RequestBody User user) {
-		System.out.println("user login : " + user);
-
-		// principal : 원리, 접근 주체
-		User principal = userService.login(user);
-		if (principal != null) {
-			session.setAttribute("principal", principal);
-		}
-		System.out.println("login : " + session.hashCode());
-		return new ResponseDto<Integer>(HttpStatus.OK, 1);
-	}
+//	@PostMapping("/user/login")
+//	public ResponseDto<Integer> login(@RequestBody User user) {
+//		System.out.println("user login : " + user);
+//
+//		// principal : 원리, 접근 주체
+//		User principal = userService.login(user);
+//		if (principal != null) {
+//			session.setAttribute("principal", principal);
+//		}
+//		System.out.println("login : " + session.hashCode());
+//		return new ResponseDto<Integer>(HttpStatus.OK, 1);
+//	}
 }

@@ -5,11 +5,11 @@
 	<form action="/auth/loginProc" method="POST">
 		<div class="form-group">
 			<label for="username">username</label> <input type="text" class="form-control" placeholder="Enter username" id="username" name="username"
-				value="teco">
+				value="min">
 		</div>
 		<div class="form-group">
 			<label for="password">password</label> <input type="password" class="form-control" placeholder="Enter password" id="password" name="password"
-				value="asd1234">
+				value="123">
 		</div>
 		<button type="submit" id="btn--login" class="btn btn-primary">sign in</button>
 	</form>

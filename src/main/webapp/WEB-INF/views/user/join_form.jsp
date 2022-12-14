@@ -4,10 +4,10 @@
 <div class="container">
 	<form>
 		<div class="form-group">
-			<label for="username">username:</label> <input type="text" class="form-control" placeholder="Enter username" id="username" value="경민">
+			<label for="username">username:</label> <input type="text" class="form-control" placeholder="Enter username" id="username" value="min">
 		</div>
 		<div class="form-group">
-			<label for="password">password:</label> <input type="password" class="form-control" placeholder="Enter password" id="password" value="왕자">
+			<label for="password">password:</label> <input type="password" class="form-control" placeholder="Enter password" id="password" value="123">
 		</div>
 		<div class="form-group">
 			<label for="email">Email:</label> <input type="email" class="form-control" placeholder="Enter email" id="email" value="a@naver.com">

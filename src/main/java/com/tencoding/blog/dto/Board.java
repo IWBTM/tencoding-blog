@@ -47,7 +47,7 @@ public class Board {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId") // 컬럼명 선언
-	private User userId; // 연관 관계 n:1
+	private User user; // 연관 관계 n:1
 
 	// Object를 다룰 때 가지고 와 달라고 요청해야한다. (mappedBy)
 	// 엄밀히 말하면 연관 관계에 주인이 아니다. select 할 때 가지고 와야 하는 데이터이다.

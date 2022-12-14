@@ -4,6 +4,9 @@ let index = {
 		$("#btn--save").bind("click", () => {
 			this.save();
 		});
+		$("#btn--delete").bind("click", () => {
+			this.deleteById();
+		});
 	},
 	save: function() {
 		let data = {
@@ -28,6 +31,22 @@ let index = {
 		}).fail(function(error) {
 			alert("오류 발생 !!.");
 			alert(error.responseJSON.error);
+		});
+	},
+	deleteById: function() {
+		let id = $("#board-id").text();
+		$.ajax({
+			type: "DELETE",
+			url: "/api/board/" + id
+		}).done(function(data, status, xhl) {
+			if (data.status == "OK") {
+				alert("삭제가 완료 되었습니다.");
+				location.href = "/";
+			} else {
+				alert("다시  시도해주세요.");
+			}
+		}).fail(function() {
+			alert("다시  시도해주세요.");
 		});
 	}
 };

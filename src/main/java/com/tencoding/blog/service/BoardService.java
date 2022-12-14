@@ -18,7 +18,7 @@ public class BoardService {
 
 	public void write(Board board, User user) {
 
-		board.setUserId(user);
+		board.setUser(user);
 		boardRepository.save(board);
 	}
 
@@ -32,5 +32,10 @@ public class BoardService {
 		return boardRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("해당 글을 찾을 수 없습니다.");
 		});
+	}
+
+	@Transactional
+	public void deleteById(int id) {
+		boardRepository.deleteById(id);
 	}
 }

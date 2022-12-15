@@ -11,6 +11,10 @@ let index = {
 		$("#btn--login").bind("click", () => {
 			this.login();
 		});
+
+		$("#btn--update").bind("click", () => {
+			this.update();
+		});
 	},
 	save: function() {
 		// form 태그에 사용자가 입력한 값 들을 자바 스크립트 변수로 가지고 옴
@@ -72,6 +76,31 @@ let index = {
 			});
 		}
 		 */
+	update: function() {
+		let data = {
+			id: $("#id").val(),
+			password: $("#password").val(),
+			email: $("#email").val(),
+			username: $("#username").val()
+		};
+
+		$.ajax({
+			type: "PUT",
+			url: "/api/user",
+			data: JSON.stringify(data),
+			contentType: "application/json; chraset=UTF-8",
+			dataType: "json"
+		}).done(function(data, textStatus, xhr) {
+			if (data.status) {
+				alert("회원 정보 수정에 성공하셨습니다.");
+				location.href = "/";
+			} else {
+				alert("예기치 못 한 오류를 마주쳤습니다..");
+			}
+		}).fail(function() {
+			alert("예기치 못 한 오류를 마주쳤습니다..");
+		});
+	}
 }
 
 // 호출

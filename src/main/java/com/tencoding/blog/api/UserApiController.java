@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +35,13 @@ public class UserApiController {
 
 		// java object에서 JSon 형식으로 알아서 변환 된다.
 		return new ResponseDto<Integer>(HttpStatus.OK, result);
+	}
+	
+	@PutMapping("/api/user")
+	public ResponseDto<?> update(@RequestBody User user) {
+		// validation 처리 .. 예외 잡아서 사용자한테 떨궈주면 돔
+		userService.saveUser(user);
+		return new ResponseDto<>(HttpStatus.OK, 1);
 	}
 
 //	@PostMapping("/user/login")

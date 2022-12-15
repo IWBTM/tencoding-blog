@@ -27,5 +27,4 @@ public class PrincipalDetailsService implements UserDetailsService {
 		System.out.println("principal : " + principal);
 		return new PrincipalDetails(principal);
 	}
-
 }

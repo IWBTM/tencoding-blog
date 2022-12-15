@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// 우리가 커스텀한 녀석을 넣어야 한다.
 		// 2. 우리가 사용하는 hash 암호화 함수를(passwordEncoder) 알려줘야 한다.
 		// BCryptPasswordEncoder를 사용해서 암호화 했다.
-
+		
 		System.out.println("auth : " + auth);
 		auth.userDetailsService(detailsService).passwordEncoder(encodePWD());
 	}
@@ -47,7 +47,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	// /auth/login_form, auth/join_form --> /auth/**
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-
 		// 개발 완료 전 테스트 시 사용하고 실 서비스 시에는 사용하지 않는 것을 권장한다.
 		http.csrf().disable();
 
@@ -55,7 +54,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				// antMatchers("/auth/**") <-- 매개 변수 안의 주소는 모두 허용하라.
 				.antMatchers("/auth/**", "/", "/js/**", "/image/**", "/css/**")
 				// 모든 권한을 줘라.
-				.permitAll().anyRequest().authenticated().and().formLogin().loginPage("/auth/login_form")
-				.loginProcessingUrl("/auth/loginProc").defaultSuccessUrl("/");
+				.permitAll()
+				.anyRequest()
+				.authenticated()
+			.and()
+				.formLogin()
+				.loginPage("/auth/login_form")
+				.loginProcessingUrl("/auth/loginProc")
+				.defaultSuccessUrl("/");
 	}
 }

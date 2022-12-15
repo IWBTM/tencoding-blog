@@ -51,6 +51,21 @@ public class UserService {
 		return -1;
 	}
 
+	@org.springframework.transaction.annotation.Transactional
+	public Integer updateUser(User reqUser) {
+		User userEntity = iUserRepository.findById(reqUser.getId()).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 사용자를 찾을 수 없습니다.");
+		});
+
+		String rawPassword = reqUser.getPassword();
+		String encPassword = encoder.encode(rawPassword);
+
+		userEntity.setUsername(reqUser.getUsername());
+		userEntity.setPassword(encPassword);
+		userEntity.setEmail(reqUser.getEmail());
+		// 더티 체킹해서 업데이트 시킬 예정
+		return 1;
+	}
 //	public User login(User user) {
 //
 //		// 기본 Repository에 필요한 함수가 존재하지 않을 경우 직접 생성하자.

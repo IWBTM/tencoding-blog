@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+import com.tencoding.blog.dto.OAuthToken;
+
 @Controller
 public class UserController {
 
@@ -45,7 +47,7 @@ public class UserController {
 	// Controller에서 데이터를 리턴하는 방법
 	@GetMapping("/auth/kakao/callback")
 	@ResponseBody
-	public String kakaoCallbac(@RequestParam String code) {
+	public OAuthToken kakaoCallbac(@RequestParam String code) {
 		// 여기서 카카오 서버에서 보내준 인가코드 값을 받을 수 있다.
 
 		// 토큰 발급 받기
@@ -64,9 +66,9 @@ public class UserController {
 
 		HttpEntity<MultiValueMap<String, String>> requestKakaoToken = new HttpEntity<>(params, headers);
 		// 헤더변조 해서 실행 시키는 메서드 : RestTemplate.exchange()
-		ResponseEntity<String> response = rt.exchange("https://kauth.kakao.com/oauth/token", HttpMethod.POST,
-				requestKakaoToken, String.class);
-		return "카카오 인가 코드 : /n " + response;
+		ResponseEntity<OAuthToken> response = rt.exchange("https://kauth.kakao.com/oauth/token", HttpMethod.POST,
+				requestKakaoToken, OAuthToken.class);
+		return response.getBody();
 	}
 
 	// https://kauth.kakao.com/oauth/token

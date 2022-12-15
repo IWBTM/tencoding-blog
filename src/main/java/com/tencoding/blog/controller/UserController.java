@@ -68,6 +68,10 @@ public class UserController {
 		// 헤더변조 해서 실행 시키는 메서드 : RestTemplate.exchange()
 		ResponseEntity<OAuthToken> response = rt.exchange("https://kauth.kakao.com/oauth/token", HttpMethod.POST,
 				requestKakaoToken, OAuthToken.class);
+		/// 여기까지 토큰 받기 완료
+
+		System.out.println(response.getBody().accessToken + "<<<<<<<<<");
+		// 다시 한번 더 kapi.kakao.com으로 토큰을 가지고 요청하여 사용자 정보를 응답 받아야 한다.
 		return response.getBody();
 	}
 

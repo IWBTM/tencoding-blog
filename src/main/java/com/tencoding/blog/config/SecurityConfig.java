@@ -26,6 +26,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private PrincipalDetailsService detailsService;
 
+	/**
+	 * 회원 정보 수정 시 Authentication 객체를 생성하기 위해서는 AuthenticationManager 가 필요하기 때문에
+	 * IoC처리
+	 */
+	@Bean
+	@Override
+	protected AuthenticationManager authenticationManager() throws Exception {
+		return super.authenticationManager();
+	}
+
 	// 비밀번호를 BCrypt 방식으로 Encode 해주는 데이터 타입이다.
 	// IoC관리를 하기 위해 여기서 선언
 	@Bean
@@ -39,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// 우리가 커스텀한 녀석을 넣어야 한다.
 		// 2. 우리가 사용하는 hash 암호화 함수를(passwordEncoder) 알려줘야 한다.
 		// BCryptPasswordEncoder를 사용해서 암호화 했다.
-		
+
 		System.out.println("auth : " + auth);
 		auth.userDetailsService(detailsService).passwordEncoder(encodePWD());
 	}
@@ -54,13 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				// antMatchers("/auth/**") <-- 매개 변수 안의 주소는 모두 허용하라.
 				.antMatchers("/auth/**", "/", "/js/**", "/image/**", "/css/**")
 				// 모든 권한을 줘라.
-				.permitAll()
-				.anyRequest()
-				.authenticated()
-			.and()
-				.formLogin()
-				.loginPage("/auth/login_form")
-				.loginProcessingUrl("/auth/loginProc")
-				.defaultSuccessUrl("/");
+				.permitAll().anyRequest().authenticated().and().formLogin().loginPage("/auth/login_form")
+				.loginProcessingUrl("/auth/loginProc").defaultSuccessUrl("/");
 	}
 }
